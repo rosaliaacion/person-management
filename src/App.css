@@ -53,3 +53,10 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.Person {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  width: 25%;
+}
