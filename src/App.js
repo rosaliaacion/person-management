@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import './App.css';
 
 //Importing Components here
@@ -5,48 +7,21 @@ import PersonList from "./components/PersonList";
 import NewPerson from './components/NewPerson';
 
 function App() {
-  const dummyPersons = [
-    {
-      name: 'Dayan',
-      last_name: 'Perez',
-      age: 30,
-      sex: 'M',
-      country: 'Cuba',
-      ci: '123457-4'
-    },
-    {
-      name: 'Rosalia',
-      last_name: 'Acion',
-      age: 32,
-      sex: 'F',
-      country: 'Cuba',
-      ci: '123456-4'
-    },
-    {
-      name: 'Rosalia',
-      last_name: 'Acion',
-      age: 32,
-      sex: 'F',
-      country: 'Cuba',
-      ci: '123456-4'
-    },
-    {
-      name: 'Rosalia',
-      last_name: 'Acion',
-      age: 32,
-      sex: 'F',
-      country: 'Cuba',
-      ci: '123456-4'
-    },
-  ]
+
+  const [persons, setPersons] = useState([]);
+
+  const onNewPersonAddHandler = (person) => {
+    setPersons([...persons, person])
+  }
+
   return (
     <div className="App">
       <div className="App-Container">
         <div className="App-New-Person-Container">
-          <NewPerson onClickNewPerson={(payload) => console.log(payload)}/>
+          <NewPerson onClickNewPerson={onNewPersonAddHandler}/>
         </div>
         <div className="App-Person-List-Container">
-          <PersonList persons={dummyPersons}/>
+          <PersonList persons={persons} onDelete={(index) => console.log(index)}/>
         </div>
       </div>
     </div>
