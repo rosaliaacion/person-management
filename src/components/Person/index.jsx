@@ -11,7 +11,7 @@ const Person = (props) => {
                 <div>Sexo: {props.person.sex}</div>
                 <div>{props.person.country}</div>
                 <div>{props.person.ci}</div>
-                <button>Eliminar</button>
+                <button onClick={props.onDelete}>Eliminar</button>
             </div>
         </>
 }
