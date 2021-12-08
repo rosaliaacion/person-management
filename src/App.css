@@ -72,3 +72,8 @@
   width: 25%;
   margin: 5px;
 }
+
+.Person .action {
+  display: flex;
+  justify-content: space-between;
+}

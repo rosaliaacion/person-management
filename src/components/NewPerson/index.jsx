@@ -1,4 +1,28 @@
 import { useState } from "react";
+import styled from "styled-components";
+
+import Button from "../Commons/Button";
+
+// Custom Styled Components
+// const Button = styled.button`
+//     padding: 10px;
+//     border: 1px solid #ddd;
+//     color: red;
+//     border-radius: 5px;
+//     cursor: pointer;
+
+//     &:disabled {
+//         color: #ddd;
+//         cursor: none;
+//     }
+// `;
+
+const Input = styled.input`
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px;
+`;
 
 const NewPerson = (props) => {
     const [data, setData] = useState({
@@ -21,22 +45,34 @@ const NewPerson = (props) => {
     const onClickAcceptHandler = (event) => {
         event.preventDefault();
         props.onClickNewPerson(data);
+        setData({
+            name: '',
+            last_name: '',
+            sex: '',
+            age: '',
+            ci: '',
+            country: ''
+        })
+    }
+
+    const isAllowClick = () => {
+        return data.name !== '' && data.last_name !== '' && data.sex !== '' && data.age !== '' && data.ci !== '' && data.country !== '';
     }
 
     return <>
         <form className="New-Person-Form">
             <div className="Row">
-                <input type="text" name="name" placeholder="Nombre" value={data.name} onChange={onChangeHanler}/>
-                <input type="text" name="last_name" placeholder="Apellido" value={data.last_name} onChange={onChangeHanler}/>
-                <input type="text" name="sex" placeholder="Sexo" value={data.sex} onChange={onChangeHanler}/>
+                <Input type="text" name="name" placeholder="Nombre" value={data.name} onChange={onChangeHanler}/>
+                <Input type="text" name="last_name" placeholder="Apellido" value={data.last_name} onChange={onChangeHanler}/>
+                <Input type="text" name="sex" placeholder="Sexo" value={data.sex} onChange={onChangeHanler}/>
             </div>
             <div className="Row">
-                <input type="text" name="age" placeholder="Edad" value={data.age} onChange={onChangeHanler}/>
-                <input type="text" name="ci" placeholder="Cedula de Identidad" value={data.ci} onChange={onChangeHanler}/>
-                <input type="text" name="country" placeholder="Pais" value={data.country} onChange={onChangeHanler}/>
+                <Input type="text" name="age" placeholder="Edad" value={data.age} onChange={onChangeHanler}/>
+                <Input type="text" name="ci" placeholder="Cedula de Identidad" value={data.ci} onChange={onChangeHanler}/>
+                <Input type="text" name="country" placeholder="Pais" value={data.country} onChange={onChangeHanler}/>
             </div>
             <div className="Row">
-                <button onClick={onClickAcceptHandler}>Aceptar</button>
+                <Button className="append" disabled={!isAllowClick()} onClick={onClickAcceptHandler}>Aceptar</Button>
             </div>
         </form>
     </>
