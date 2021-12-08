@@ -1,3 +1,5 @@
+import Button from "../Commons/Button";
+
 const Person = (props) => {
 
     const personFullName = () => {
@@ -11,7 +13,10 @@ const Person = (props) => {
                 <div>Sexo: {props.person.sex}</div>
                 <div>{props.person.country}</div>
                 <div>{props.person.ci}</div>
-                <button onClick={props.onDelete}>Eliminar</button>
+                <div className="actions">
+                    <Button className="delete" onClick={props.onDelete}>Eliminar</Button>
+                    <Button>Editar</Button>
+                </div>
             </div>
         </>
 }
