@@ -1,28 +1,8 @@
 import { useState } from "react";
-import styled from "styled-components";
 
 import Button from "../Commons/Button";
-
-// Custom Styled Components
-// const Button = styled.button`
-//     padding: 10px;
-//     border: 1px solid #ddd;
-//     color: red;
-//     border-radius: 5px;
-//     cursor: pointer;
-
-//     &:disabled {
-//         color: #ddd;
-//         cursor: none;
-//     }
-// `;
-
-const Input = styled.input`
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 5px;
-`;
+import Select from "../Commons/Select";
+import Input from "../Commons/Input";
 
 const NewPerson = (props) => {
     const [data, setData] = useState({
@@ -35,7 +15,7 @@ const NewPerson = (props) => {
     });
 
     const onChangeHanler = (event) => {
-        const { value, name } = event.target;
+        const { value, name } = event.target; // Destructuracion de objetos
         setData({
             ...data,
             [name]: value
@@ -64,12 +44,18 @@ const NewPerson = (props) => {
             <div className="Row">
                 <Input type="text" name="name" placeholder="Nombre" value={data.name} onChange={onChangeHanler}/>
                 <Input type="text" name="last_name" placeholder="Apellido" value={data.last_name} onChange={onChangeHanler}/>
-                <Input type="text" name="sex" placeholder="Sexo" value={data.sex} onChange={onChangeHanler}/>
+                <Select name="sex" onChange={onChangeHanler}>
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </Select>
             </div>
             <div className="Row">
                 <Input type="text" name="age" placeholder="Edad" value={data.age} onChange={onChangeHanler}/>
                 <Input type="text" name="ci" placeholder="Cedula de Identidad" value={data.ci} onChange={onChangeHanler}/>
-                <Input type="text" name="country" placeholder="Pais" value={data.country} onChange={onChangeHanler}/>
+                <Select name="country" onChange={onChangeHanler}>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Uruguay">Uruguay</option>
+                </Select>
             </div>
             <div className="Row">
                 <Button className="append" disabled={!isAllowClick()} onClick={onClickAcceptHandler}>Aceptar</Button>
