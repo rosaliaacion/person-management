@@ -1,3 +1,5 @@
+import { BsFillPersonDashFill, BsFillPersonCheckFill } from "react-icons/bs";
+
 import Button from "../Commons/Button";
 
 const Person = (props) => {
@@ -14,8 +16,8 @@ const Person = (props) => {
                 <div>{props.person.country}</div>
                 <div>{props.person.ci}</div>
                 <div className="actions">
-                    <Button className="delete" onClick={props.onDelete}>Eliminar</Button>
-                    <Button>Editar</Button>
+                    <Button className="delete" onClick={props.onDelete}><BsFillPersonDashFill /> Eliminar</Button>
+                    <Button className="edit"><BsFillPersonCheckFill/> Editar</Button>
                 </div>
             </div>
         </>
