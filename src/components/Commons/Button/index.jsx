@@ -7,7 +7,8 @@ const Button = styled.button`
     border-radius: 5px;
     cursor: pointer;
 
-    &.append {
+    &.append,
+    &.edit {
         color: blue;
     }
 
@@ -17,7 +18,7 @@ const Button = styled.button`
 
     &:disabled {
         color: #ddd;
-        cursor: none;
+        cursor: auto;
     }
 `;
 

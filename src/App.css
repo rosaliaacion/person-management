@@ -74,7 +74,8 @@
   margin: 5px;
 }
 
-.Person .action {
+.Person .actions {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
